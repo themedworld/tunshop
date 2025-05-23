@@ -1,0 +1,16 @@
+/* Élargir tous les inputs */
+.register-card input.form-control {
+    width: 100%;
+    max-width: 500px; /* Ajustez selon vos besoins */
+}
+
+/* Élargir la carte */
+.register-card {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Bouton principal */
+.btn-primary {
+    min-width: 200px;
+}

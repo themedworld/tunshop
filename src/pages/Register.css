@@ -1,0 +1,310 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
+
+:root {
+    /* Light Mode Colors */
+    --primary-color: #4361ee;
+    --primary-dark: #3a56d4;
+    --secondary-color: #3f37c9;
+    --success-color: #4cc9f0;
+    --error-color: #f72585;
+    --text-color: #2b2d42;
+    --light-gray: #f8f9fa;
+    --medium-gray: #e9ecef;
+    --dark-gray: #adb5bd;
+    --white: #ffffff;
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --input-bg: #ffffff;
+    --error-bg: #ffebee;
+    --instructions-bg: #ffebee;
+
+    /* Dark Mode Colors */
+    --dark-primary-color: #5a72e6;
+    --dark-primary-dark: #4a62d4;
+    --dark-secondary-color: #5753d9;
+    --dark-success-color: #6bd9f8;
+    --dark-error-color: #ff4d8f;
+    --dark-text-color: #e9ecef;
+    --dark-light-gray: #121212;
+    --dark-medium-gray: #2d2d2d;
+    --dark-dark-gray: #6c757d;
+    --dark-white: #1e1e1e;
+    --dark-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    --dark-input-bg: #2d2d2d;
+    --dark-error-bg: #3a1a24;
+    --dark-instructions-bg: #3a1a24;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: var(--light-gray);
+    color: var(--text-color);
+    line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode {
+    --primary-color: var(--dark-primary-color);
+    --primary-dark: var(--dark-primary-dark);
+    --secondary-color: var(--dark-secondary-color);
+    --success-color: var(--dark-success-color);
+    --error-color: var(--dark-error-color);
+    --text-color: var(--dark-text-color);
+    --light-gray: var(--dark-light-gray);
+    --medium-gray: var(--dark-medium-gray);
+    --dark-gray: var(--dark-dark-gray);
+    --white: var(--dark-white);
+    --box-shadow: var(--dark-box-shadow);
+    --input-bg: var(--dark-input-bg);
+    --error-bg: var(--dark-error-bg);
+    --instructions-bg: var(--dark-instructions-bg);
+}
+
+.register-container {
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: var(--white);
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+    transition: all 0.3s ease;
+}
+
+.success-message {
+    text-align: center;
+    padding: 2rem;
+}
+
+.success-message h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.success-message p {
+    margin-bottom: 2rem;
+    color: var(--text-color);
+}
+
+.btn-login {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background-color: var(--primary-color);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-login:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+.register-form {
+    width: 100%;
+}
+
+.form-title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+    font-size: 1.8rem;
+}
+
+.error-message {
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    background-color: var(--error-bg);
+    color: var(--error-color);
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.error-message.hidden {
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid var(--medium-gray);
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(67, 97, 238, 0.2);
+}
+
+.form-group input.input-error {
+    border-color: var(--error-color);
+}
+
+.valid, .invalid {
+    margin-left: 0.5rem;
+}
+
+.valid {
+    color: var(--success-color);
+}
+
+.invalid {
+    color: var(--error-color);
+}
+
+.hide {
+    display: none;
+}
+
+.instructions {
+    font-size: 0.8rem;
+    color: var(--error-color);
+    background-color: var(--instructions-bg);
+    padding: 0.5rem;
+    border-radius: 5px;
+    margin-top: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.instructions svg {
+    margin-right: 0.3rem;
+}
+
+.offscreen {
+    position: absolute;
+    left: -9999px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.submit-btn:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+.submit-btn:disabled {
+    background-color: var(--dark-gray);
+    cursor: not-allowed;
+    transform: none;
+}
+
+.login-link {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.login-link a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 576px) {
+    .register-container {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+    
+    .form-title {
+        font-size: 1.5rem;
+    }
+}
+
+/* Toggle Switch for Dark Mode */
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+}
+
+.theme-switch {
+    display: inline-block;
+    height: 24px;
+    position: relative;
+    width: 50px;
+}
+
+.theme-switch input {
+    display: none;
+}
+
+.slider {
+    background-color: var(--medium-gray);
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+    border-radius: 24px;
+}
+
+.slider:before {
+    background-color: var(--white);
+    bottom: 3px;
+    content: "";
+    height: 18px;
+    left: 3px;
+    position: absolute;
+    transition: .4s;
+    width: 18px;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--primary-color);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}

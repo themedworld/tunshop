@@ -1,0 +1,308 @@
+:root {
+  /* Light Mode Colors (unchanged) */
+  --primary-color: #3498db;
+  --primary-dark: #2980b9;
+  --sidebar-bg: #2c3e50;
+  --sidebar-text: #ecf0f1;
+  --sidebar-hover: #34495e;
+  --header-bg: #2c3e50;
+  --content-bg: #f5f5f5;
+  --form-bg: #ffffff;
+  --text-color: #2c3e50;
+  --border-color: #ddd;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+
+  /* Improved Dark Mode Colors */
+  --dark-primary-color: #4dabf7;  /* Brighter blue for better visibility */
+  --dark-primary-dark: #339af0;
+  --dark-sidebar-bg: #1e293b;    /* Dark blue-gray instead of pure black */
+  --dark-sidebar-text: #e2e8f0;
+  --dark-sidebar-hover: #334155;
+  --dark-header-bg: #1e293b;     /* Matches sidebar */
+  --dark-content-bg: #0f172a;    /* Very dark blue */
+  --dark-form-bg: #1e293b;       /* Same as sidebar for consistency */
+  --dark-text-color: #f8fafc;    /* Pure white is too harsh, soft white */
+  --dark-border-color: #334155;  /* Subtle borders */
+  --dark-shadow-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Dark mode specific adjustments */
+.dark-mode {
+  --primary-color: var(--dark-primary-color);
+  --primary-dark: var(--dark-primary-dark);
+  --sidebar-bg: var(--dark-sidebar-bg);
+  --sidebar-text: var(--dark-sidebar-text);
+  --sidebar-hover: var(--dark-sidebar-hover);
+  --header-bg: var(--dark-header-bg);
+  --content-bg: var(--dark-content-bg);
+  --form-bg: var(--dark-form-bg);
+  --text-color: var(--dark-text-color);
+  --border-color: var(--dark-border-color);
+  --shadow-color: var(--dark-shadow-color);
+  
+  /* Additional dark mode enhancements */
+  background-color: var(--dark-content-bg);
+  color: var(--dark-text-color);
+}
+
+/* Special case for forms in dark mode */
+.dark-mode .product-form-container {
+  background-color: var(--dark-form-bg);
+  border: 1px solid var(--dark-border-color);
+  box-shadow: 0 2px 10px var(--dark-shadow-color);
+}
+
+/* Better contrast for active menu items in dark mode */
+.dark-mode .sidebar-menu .active {
+  background-color: var(--dark-primary-color);
+  color: #111 !important; /* Dark text on light background */
+}
+
+/* Structure de base */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--content-bg);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* En-tête */
+header {
+  background-color: var(--header-bg);
+  color: white;
+}
+
+/* Conteneur principal */
+.content-wrapper {
+  display: flex;
+  flex: 1;
+  margin-top: 60px;
+  position: relative;
+}
+
+/* Bouton de basculement */
+.sidebar-toggle-container {
+  position: fixed;
+  top: 70px;
+  left: 20px;
+  z-index: 1000;
+}
+
+.toggle-sidebar-btn {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 5px var(--shadow-color);
+  transition: all 0.3s ease;
+}
+
+.toggle-sidebar-btn:hover {
+  background: var(--primary-dark);
+  transform: scale(1.1);
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  width: 250px;
+  height: calc(100vh - 60px);
+  background-color: var(--sidebar-bg);
+  color: var(--sidebar-text);
+  transition: transform 0.3s ease;
+  z-index: 999;
+  overflow-y: auto;
+}
+
+.sidebar-closed {
+  transform: translateX(-100%);
+}
+
+/* Contenu principal */
+.main-content {
+  flex: 1;
+  padding: 20px;
+  transition: margin-left 0.3s ease;
+  width: 100%;
+  margin-left: 0;
+}
+
+.main-content.with-sidebar {
+  margin-left: 250px;
+}
+
+/* Formulaire de produit */
+.product-form-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: var(--form-bg);
+  border-radius: 8px;
+  box-shadow: 0 2px 10px var(--shadow-color);
+  transition: all 0.3s ease;
+}
+
+.form-title {
+  color: var(--text-color);
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.form-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 8px;
+  color: var(--text-color);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: var(--form-bg);
+  color: var(--text-color);
+  transition: all 0.3s ease;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Upload d'images */
+.image-upload-box {
+  border: 2px dashed var(--border-color);
+  padding: 20px;
+  border-radius: 4px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.image-upload-box:hover {
+  border-color: var(--primary-color);
+}
+
+.upload-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+.image-preview {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.image-preview img {
+  max-width: 100%;
+  max-height: 200px;
+  border-radius: 4px;
+}
+
+.remove-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* Boutons du formulaire */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.submit-btn, .cancel-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submit-btn {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.submit-btn:hover {
+  background-color: var(--primary-dark);
+}
+
+.cancel-btn {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.cancel-btn:hover {
+  background-color: #c0392b;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+    width: 80%;
+  }
+  
+  .sidebar.sidebar-open {
+    transform: translateX(0);
+  }
+  
+  .main-content.with-sidebar {
+    margin-left: 0;
+    transform: translateX(80%);
+    overflow: hidden;
+  }
+  
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .toggle-sidebar-btn {
+    top: 15px;
+    left: 15px;
+  }
+}

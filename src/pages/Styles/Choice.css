@@ -1,0 +1,151 @@
+:root {
+  /* Light mode colors */
+  --bg-color: #f8f9fa;
+  --card-bg: white;
+  --text-color: #2c3e50;
+  --subtext-color: #7f8c8d;
+  --option-bg: #f8f9fa;
+  --primary-btn: #3498db;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  
+  /* Dark mode colors */
+  --dark-bg-color: #1a1a1a;
+  --dark-card-bg: #2d2d2d;
+  --dark-text-color: #ecf0f1;
+  --dark-subtext-color: #bdc3c7;
+  --dark-option-bg: #3d3d3d;
+  --dark-primary-btn: #2980b9;
+  --dark-shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+.choice-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    background-color: var(--bg-color);
+    transition: background-color 0.3s ease;
+}
+
+.choice-card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px var(--shadow-color);
+    padding: 40px;
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.choice-title {
+    color: var(--text-color);
+    margin-bottom: 10px;
+    font-size: 2rem;
+    transition: color 0.3s ease;
+}
+
+.choice-subtitle {
+    color: var(--subtext-color);
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+.role-options {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.role-option {
+    flex: 1;
+    min-width: 250px;
+    padding: 25px;
+    border-radius: 10px;
+    background: var(--option-bg);
+    transition: all 0.3s ease;
+}
+
+.role-option:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px var(--shadow-color);
+}
+
+.role-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.role-title {
+    color: var(--text-color);
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+}
+
+.role-description {
+    color: var(--subtext-color);
+    margin-bottom: 20px;
+    min-height: 50px;
+    transition: color 0.3s ease;
+}
+
+.role-button {
+    width: 100%;
+    padding: 10px;
+    font-weight: 500;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--primary-btn);
+    border-color: var(--primary-btn);
+}
+
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.already-account {
+    margin-top: 30px;
+    color: var(--subtext-color);
+    transition: color 0.3s ease;
+}
+
+.already-account a {
+    color: var(--primary-btn);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.already-account a:hover {
+    text-decoration: underline;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+  --bg-color: var(--dark-bg-color);
+  --card-bg: var(--dark-card-bg);
+  --text-color: var(--dark-text-color);
+  --subtext-color: var(--dark-subtext-color);
+  --option-bg: var(--dark-option-bg);
+  --primary-btn: var(--dark-primary-btn);
+  --shadow-color: var(--dark-shadow-color);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .role-options {
+        flex-direction: column;
+    }
+    
+    .choice-card {
+        padding: 25px;
+    }
+}

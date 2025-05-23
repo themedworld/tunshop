@@ -1,0 +1,178 @@
+/* Fonts et reset */
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Variables pour le thème clair */
+:root {
+  --bg-color: antiquewhite;
+  --text-color: #000;
+  --card-bg: rgba(0,0,0,0.4);
+  --input-bg: #fff;
+  --input-border: #ccc;
+  --text-muted: #6c757d;
+  --alert-bg: lightpink;
+  --alert-color: firebrick;
+}
+
+/* Variables pour le thème sombre */
+.dark-mode {
+  --bg-color: #121212;
+  --text-color: #fff;
+  --card-bg: #1e1e1e;
+  --input-bg: #2d2d2d;
+  --input-border: #444;
+  --text-muted: #aaa;
+  --alert-bg: #2c2c2c;
+  --alert-color: #fff;
+}
+
+/* Styles de base */
+html {
+  font-family: 'Nunito', sans-serif;
+  font-size: 22px;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 1rem 0.5rem;
+}
+
+/* Cartes et sections */
+section {
+  width: 100%;
+  max-width: 420px;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 1rem;
+  background-color: var(--card-bg);
+}
+
+.card {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+}
+
+/* Formulaires */
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  flex-grow: 1;
+  padding-bottom: 1rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="name"],
+input[type="password"],
+button,
+textarea,
+.form-control {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1rem;
+  padding: 0.25rem;
+  border-radius: 0.5rem;
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  border: 1px solid var(--input-border);
+}
+
+.input-group-text {
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  border-color: var(--input-border);
+}
+
+label,
+button {
+  margin-top: 1rem;
+}
+
+button {
+  padding: 0.5rem;
+}
+
+/* Liens */
+a, a:visited {
+  color: var(--text-color);
+}
+
+/* Messages et alertes */
+.instructions {
+  font-size: 0.75rem;
+  border-radius: 0.5rem;
+  background: #000;
+  color: #fff;
+  padding: 0.25rem;
+  position: relative;
+  bottom: -10px;
+}
+
+.instructions > svg {
+  margin-right: 0.25rem;
+}
+
+.errmsg {
+  background-color: var(--alert-bg);
+  color: var(--alert-color);
+  font-weight: bold;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.text-muted {
+  color: var(--text-muted) !important;
+}
+
+/* Utilitaires */
+.offscreen {
+  position: absolute;
+  left: -9999px;
+}
+
+.hide {
+  display: none;
+}
+
+.valid {
+  color: limegreen;
+  margin-left: 0.25rem;
+}
+
+.invalid {
+  color: red;
+  margin-left: 0.25rem;
+}
+
+.flexGrow {
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.line {
+  display: inline-block;
+}
+
+li {
+  list-style-type: none;
+}

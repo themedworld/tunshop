@@ -1,0 +1,250 @@
+:root {
+  /* Light Mode Colors */
+  --login-bg-gradient-start: #f5f7fa;
+  --login-bg-gradient-end: #c3cfe2;
+  --card-bg: white;
+  --text-color: #212529;
+  --text-secondary: #6c757d;
+  --input-bg: #fff;
+  --input-border: #ced4da;
+  --input-focus-shadow: rgba(13, 110, 253, 0.15);
+  --primary-btn: #0d6efd;
+  --primary-btn-hover: #0b5ed7;
+  --input-group-bg: #f8f9fa;
+  --input-group-text: #495057;
+  --link-color: #0d6efd;
+  --link-hover: #0a58ca;
+  --border-radius: 0.375rem;
+  --box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  --transition-speed: 0.3s;
+
+  /* Dark Mode Colors */
+  --dark-login-bg-gradient-start: #040a0f;
+  --dark-login-bg-gradient-end: #4ca1af;
+  --dark-card-bg: #343a40;
+  --dark-text-color: #f8f9fa;
+  --dark-text-secondary: #adb5bd;
+  --dark-input-bg: #495057;
+  --dark-input-border: #6c757d;
+  --dark-input-focus-shadow: rgba(13, 110, 253, 0.25);
+  --dark-primary-btn: #3d7eff;
+  --dark-primary-btn-hover: #2b6de5;
+  --dark-input-group-bg: #495057;
+  --dark-input-group-text: #e9ecef;
+  --dark-link-color: #85b6ff;
+  --dark-link-hover: #6ba3ff;
+}
+
+/* Base Styles */
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  color: var(--text-color);
+  transition: background var(--transition-speed) ease, 
+              color var(--transition-speed) ease;
+}
+
+.login-page {
+  background: linear-gradient(135deg, 
+    var(--login-bg-gradient-start) 0%, 
+    var(--login-bg-gradient-end) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+  transition: background var(--transition-speed) ease;
+}
+.dark-mode {
+  --text-color: var(--dark-text-color);
+  --input-bg: var(--dark-input-bg);
+  --input-border: var(--dark-input-border);
+}
+.login-card {
+  width: 100%;
+  max-width: 450px;
+  border-radius: var(--border-radius);
+  border: none;
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  box-shadow: var(--box-shadow);
+  overflow: hidden;
+  transition: all var(--transition-speed) ease;
+}
+
+.login-card .card-body {
+  padding: 2.5rem;
+}
+.card {
+  background-color: var(--card-bg) !important;
+  border-color: var(--border-color) !important;
+}
+
+.form-control {
+  background-color: var(--input-bg) !important;
+  color: var(--text-color) !important;
+  border-color: var(--input-border) !important;
+}
+.text-muted {
+  color: var(--text-muted) !important;
+}
+.login-card .card-title {
+  color: var(--text-color);
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-size: 1.75rem;
+}
+
+.login-card .card-text {
+  color: var(--text-secondary);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* Form Elements */
+.form-floating {
+  margin-bottom: 1.25rem;
+}
+
+.form-control {
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  border: 1px solid var(--input-border);
+  border-radius: var(--border-radius);
+  padding: 1rem 0.75rem;
+  height: auto;
+  transition: all var(--transition-speed) ease;
+}
+
+.form-control:focus {
+  box-shadow: 0 0 0 0.25rem var(--input-focus-shadow);
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  border-color: var(--input-border);
+}
+
+.form-floating label {
+  color: var(--text-secondary);
+  padding: 1rem 0.75rem;
+  transition: all var(--transition-speed) ease;
+}
+
+.form-floating>.form-control:focus~label,
+.form-floating>.form-control:not(:placeholder-shown)~label {
+  color: var(--text-secondary);
+  transform: scale(0.85) translateY(-0.9rem) translateX(0.15rem);
+}
+
+.input-group-text {
+  background-color: var(--input-group-bg);
+  color: var(--input-group-text);
+  border-color: var(--input-border);
+  transition: all var(--transition-speed) ease;
+}
+
+/* Buttons */
+.btn {
+  border-radius: var(--border-radius);
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  transition: all var(--transition-speed) ease;
+}
+
+.btn-primary {
+  background-color: var(--primary-btn);
+  border: none;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-btn-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Links */
+.login-card a {
+  color: var(--link-color);
+  text-decoration: none;
+  transition: color var(--transition-speed) ease;
+}
+
+.login-card a:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+}
+
+/* Dark Mode Activation */
+body.dark-mode {
+  --login-bg-gradient-start: var(--dark-login-bg-gradient-start);
+  --login-bg-gradient-end: var(--dark-login-bg-gradient-end);
+  --card-bg: var(--dark-card-bg);
+  --text-color: var(--dark-text-color);
+  --text-secondary: var(--dark-text-secondary);
+  --input-bg: var(--dark-input-bg);
+  --input-border: var(--dark-input-border);
+  --input-focus-shadow: var(--dark-input-focus-shadow);
+  --primary-btn: var(--dark-primary-btn);
+  --primary-btn-hover: var(--dark-primary-btn-hover);
+  --input-group-bg: var(--dark-input-group-bg);
+  --input-group-text: var(--dark-input-group-text);
+  --link-color: var(--dark-link-color);
+  --link-hover: var(--dark-link-hover);
+}
+
+/* Dark Mode Specific Enhancements */
+.dark-mode .form-check-label {
+  color: var(--dark-text-color);
+}
+
+.dark-mode .text-muted {
+  color: var(--dark-text-secondary) !important;
+}
+
+.dark-mode .form-control::placeholder {
+  color: var(--dark-text-secondary);
+  opacity: 0.7;
+}
+
+/* Theme Toggle Switch */
+.theme-toggle {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 10;
+}
+
+.theme-toggle-btn {
+  background: none;
+  border: none;
+  color: var(--text-color);
+  cursor: pointer;
+  font-size: 1.25rem;
+  transition: all var(--transition-speed) ease;
+}
+
+.theme-toggle-btn:hover {
+  transform: rotate(30deg) scale(1.1);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .login-page {
+    padding: 1rem;
+  }
+  
+  .login-card .card-body {
+    padding: 1.75rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .login-card .card-body {
+    padding: 1.5rem;
+  }
+  
+  .login-card .card-title {
+    font-size: 1.5rem;
+  }
+}
