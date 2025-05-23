@@ -16,7 +16,8 @@ const ProductModal = ({ selectedProduct, closeModal, addToCart, isDarkMode }) =>
   const [quantity, setQuantity] = useState(1);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isFavorite, setIsFavorite] = useState(false);
-
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+  
   const allImages = [
     selectedProduct.primaryImage,
     ...(selectedProduct.secondaryImages || [])

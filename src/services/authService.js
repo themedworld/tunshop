@@ -2,7 +2,7 @@
  import axiosInstance from "../axios/axiosInstance";
  import jwt_decode  from 'jwt-decode';
  
-
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
  const setToken = (token) => {
         localStorage.setItem('token' ,token);
@@ -26,7 +26,7 @@ const getorderId = () => {
   return localStorage.getItem('orderid');
 };
  const login = (userData) => {
-    return axiosInstance.post("http://localhost:3001/api/v1/users/signin", userData);
+    return axiosInstance.post(`${API_BASE_URL}/api/v1/users/signin`, userData);
  }
 
 

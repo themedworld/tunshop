@@ -45,6 +45,7 @@ const clearProductId = () => {
   const [showModal, setShowModal] = useState(false);
   const [selectedProducts, setSelectedProducts] = useState([]); // Pour la sélection multiple
   const navigate = useNavigate();
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
   // Récupération initiale des données utilisateur
   useEffect(() => {
@@ -88,7 +89,7 @@ const clearProductId = () => {
     try {
       setLoading(true);
       setError(null);
-      const response = await axios.get(`http://localhost:3001/api/v1/products/user/${userId}`);
+      const response = await axios.get(`${API_BASE_URL}/api/v1/products/user/${userId}`);
       setProducts(response.data);
     } catch (error) {
       console.error('Error fetching products:', error);
@@ -141,7 +142,7 @@ const clearProductId = () => {
       try {
         await Promise.all(
           selectedProducts.map(id => 
-            axios.delete(`http://localhost:3001/api/v1/products/${id}`)
+            axios.delete(`${API_BASE_URL}/api/v1/products/${id}`)
           )
         );
         fetchProducts(userData.userid);
@@ -156,7 +157,7 @@ const clearProductId = () => {
   const handleDelete = async (productId) => {
     if (window.confirm('Êtes-vous sûr de vouloir supprimer ce produit ?')) {
       try {
-        await axios.delete(`http://localhost:3001/api/v1/products/${productId}`);
+        await axios.delete(`${API_BASE_URL}/api/v1/products/${productId}`);
         fetchProducts(userData.userid);
         // Retirer le produit de la sélection s'il y était
         setSelectedProducts(prev => prev.filter(id => id !== productId));

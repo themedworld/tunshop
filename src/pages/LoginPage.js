@@ -27,7 +27,8 @@ const LoginPage = () => {
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false); // État pour le chargement
     const navigate = useNavigate();
-
+    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+    
   // Dans LoginPage.js
 const submitForm = async(event) => {
     event.preventDefault();

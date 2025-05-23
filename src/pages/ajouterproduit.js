@@ -34,7 +34,7 @@ const ProductForm = () => {
  const [activeMenu, setActiveMenu] = useState('dashboard');
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [isDarkMode, setIsDarkMode] = useState(() => localStorage.getItem('darkMode') === 'true');
-
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
   const toggleDarkMode = () => {
     const newMode = !isDarkMode;
@@ -123,7 +123,7 @@ const ProductForm = () => {
         variants: product.variants.split(',').map(v => v.trim())
       };
 
-      await axios.post('http://localhost:3001/api/v1/products', payload);
+      await axios.post(`${API_BASE_URL}/api/v1/products`, payload);
       alert('Produit créé avec succès !');
       navigate('/ventes');
     } catch (error) {

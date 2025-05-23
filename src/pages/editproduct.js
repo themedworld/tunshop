@@ -13,7 +13,9 @@ const EditProductForm = () => {
   const [userName, setUserName] = useState('');
   const [userid, setUserid] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+  
+  
   const [product, setProduct] = useState({
     name: '',
     category: 'Electronics',
@@ -68,7 +70,7 @@ const EditProductForm = () => {
 
   const fetchProduct = async (id) => {
     try {
-      const response = await axios.get(`http://localhost:3001/api/v1/products/${id}`);
+      const response = await axios.get(`${API_BASE_URL}/api/v1/products/${id}`);
       const productData = response.data;
       
       setProduct({
@@ -182,7 +184,7 @@ const EditProductForm = () => {
       // Retirez userid qui n'existe pas dans l'entité Product
     };
 
-   await axios.put(`http://localhost:3001/api/v1/products/${productId}`, payload);
+   await axios.put(`${API_BASE_URL}/api/v1/products/${productId}`, payload);
       alert('Produit mis à jour avec succès !');
       navigate('/ventes');
     } catch (error) {

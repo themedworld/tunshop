@@ -18,6 +18,7 @@ import Header from './Header';
 import Sidebar from './SidebarClient';
 
 const CheckoutPage = () => {
+    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
     const location = useLocation();
     const navigate = useNavigate();
     const { cart, total, isDarkMode: propDarkMode } = location.state || {};
@@ -57,7 +58,7 @@ const handleSubmit = async (e) => {
                 items: orderItems
             };
               console.log("userid=", authService.getUserId(),orderData );
-            const response = await fetch('http://localhost:3001/api/v1/commandes', {
+            const response = await fetch(`${API_BASE_URL}/api/v1/commandes`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

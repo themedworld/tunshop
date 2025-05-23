@@ -57,7 +57,7 @@ const GetStarted = () => {
                     
                     <div className="col-lg-6 col-md-12">
                         <div className="image-container">
-                            <img src="https://www.entreprises-magazine.com/wp-content/uploads/2022/02/friperie-Tunisie.jpg" alt="Mode durable en Tunisie" className="main-image" />
+                            <img src="https://tse1.mm.bing.net/th?id=OIP.dQF_LD1nPL8ThvpZ3ukS5AHaEK&pid=Api&P=0&h=180" alt="Mode durable en Tunisie" className="main-image" />
                         </div>
                     </div>
                 </div>

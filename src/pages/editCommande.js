@@ -36,6 +36,7 @@ const EditOrderPage = () => {
   const [status, setStatus] = useState('En attente');
   const [items, setItems] = useState([]);
   const [notes, setNotes] = useState('');
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
   const toggleDarkMode = () => {
     const newMode = !isDarkMode;
@@ -51,7 +52,7 @@ const EditOrderPage = () => {
   useEffect(() => {
     const fetchOrderDetails = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/api/v1/commandes/${id}`);
+        const response = await axios.get(`${API_BASE_URL}/api/v1/commandes/${id}`);
         const orderData = response.data;
         setOrder(orderData);
         setShippingAddress(orderData.shippingAddress);
@@ -82,7 +83,7 @@ const EditOrderPage = () => {
         notes
       };
 
-      const response = await axios.put(`http://localhost:3001/api/v1/commandes/${id}`, updatedOrder);
+      const response = await axios.put(`${API_BASE_URL}/api/v1/commandes/${id}`, updatedOrder);
       navigate('/RecentOrdersPage', { state: { orderUpdated: true } });
     } catch (err) {
       setError(err.response?.data?.message || "Erreur lors de la mise à jour de la commande");
@@ -93,13 +94,13 @@ const handleCancelOrder = async () => {
   try {
     // Restaurer le stock pour tous les articles avant de supprimer la commande
     await Promise.all(items.map(item => 
-      axios.put(`http://localhost:3001/api/v1/products/${item.product.id}`, {
+      axios.put(`${API_BASE_URL}/api/v1/products/${item.product.id}`, {
         stock: item.product.stock + item.quantity
       })
     ));
 
     // Supprimer la commande
-    await axios.delete(`http://localhost:3001/api/v1/commandes/${id}`);
+    await axios.delete(`${API_BASE_URL}/api/v1/commandes/${id}`);
     navigate('/RecentOrdersPage', { state: { orderCancelled: true } });
   } catch (err) {
     setError(err.response?.data?.message || "Erreur lors de l'annulation de la commande");
@@ -118,7 +119,7 @@ const handleCancelOrder = async () => {
     
     if (quantityDiff > 0) {
       // Si la quantité est réduite, ajouter la différence au stock
-      await axios.put(`http://localhost:3001/api/v1/products/${itemToUpdate.product.id}`, {
+      await axios.put(`${API_BASE_URL}/api/v1/products/${itemToUpdate.product.id}`, {
         stock: itemToUpdate.product.stock + quantityDiff
       });
     }
@@ -141,7 +142,7 @@ const handleCancelOrder = async () => {
     if (!itemToRemove) return;
 
     // Envoyer une requête pour mettre à jour le stock du produit
-    await axios.put(`http://localhost:3001/api/v1/products/${itemToRemove.product.id}`, {
+    await axios.put(`${API_BASE_URL}/api/v1/products/${itemToRemove.product.id}`, {
       stock: itemToRemove.product.stock + itemToRemove.quantity
     });
 

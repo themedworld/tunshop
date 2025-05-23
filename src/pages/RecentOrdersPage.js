@@ -21,6 +21,7 @@ import Header from './Header';
 import Sidebar from './SidebarClient';
 
 const RecentOrdersPage = () => {
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -32,7 +33,7 @@ const RecentOrdersPage = () => {
   // Fonction pour modifier une commande
   const updateOrder = async (orderId, updatedData) => {
     try {
-      const response = await axios.put(`http://localhost:3001/api/v1/commandes/${orderId}`, updatedData);
+      const response = await axios.put(`${API_BASE_URL}/api/v1/commandes/${orderId}`, updatedData);
       return response.data;
     } catch (error) {
       throw error;
@@ -42,7 +43,7 @@ const RecentOrdersPage = () => {
   // Fonction pour supprimer une commande
   const deleteOrder = async (orderId) => {
     try {
-      await axios.delete(`http://localhost:3001/api/v1/commandes/${orderId}`);
+      await axios.delete(`${API_BASE_URL}/api/v1/commandes/${orderId}`);
     } catch (error) {
       throw error;
     }
@@ -58,7 +59,7 @@ const RecentOrdersPage = () => {
   useEffect(() => {
     const fetchRecentOrders = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/api/v1/commandes/user/${userId}`);
+        const response = await axios.get(`${API_BASE_URL}/api/v1/commandes/user/${userId}`);
         const now = new Date();
         const recentOrders = response.data.filter(order => {
           const orderDate = new Date(order.orderDate);

@@ -29,7 +29,8 @@ const Client = () => {
     const [loading, setLoading] = useState(true);
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [showModal, setShowModal] = useState(false);
-  
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
     const navigate = useNavigate();
 
     useEffect(() => { 
@@ -44,7 +45,7 @@ const Client = () => {
 
     const fetchProducts = async () => {
         try {
-            const response = await fetch('http://localhost:3001/api/v1/products');
+            const response = await fetch(`${API_BASE_URL}/api/v1/products`);
             const data = await response.json();
             setProducts(data);
             setFilteredProducts(data);
@@ -60,7 +61,7 @@ const Client = () => {
     const searchProducts = async (keyword) => {
         try {
             setLoading(true);
-            const response = await fetch(`http://localhost:3001/api/v1/products/search/${encodeURIComponent(keyword)}`);
+            const response = await fetch(`${API_BASE_URL}/api/v1/products/search/${encodeURIComponent(keyword)}`);
             const data = await response.json();
             setFilteredProducts(data);
         } catch (error) {
@@ -74,11 +75,11 @@ const Client = () => {
         try {
             setLoading(true);
             if (category === "all") {
-                const response = await fetch('http://localhost:3001/api/v1/products');
+                const response = await fetch(`${API_BASE_URL}/api/v1/products`);
                 const data = await response.json();
                 setFilteredProducts(data);
             } else {
-                const response = await fetch(`http://localhost:3001/api/v1/products/category/${encodeURIComponent(category)}`);
+                const response = await fetch(`${API_BASE_URL}/api/v1/products/category/${encodeURIComponent(category)}`);
                 const data = await response.json();
                 setFilteredProducts(data);
             }

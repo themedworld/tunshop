@@ -5,13 +5,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from '../axios/axiosInstance';
 import { Link } from "react-router-dom";
 import './Register.css';
-
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 const USERNAME_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const COMPANY_NAME_REGEX = /^[A-Za-z\s]{2,}$/;
 const adresse_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
-const REGISTER_URL = 'http://localhost:3001/api/v1/users/signup';
+const REGISTER_URL = `${API_BASE_URL}/api/v1/users/signup`;
 
 const Registerr = () => {
 

@@ -10,7 +10,7 @@ import './Recruteurs.css';
 const Vendeur = () => {
   const [username, setUserName] = useState('');
   const [userRole, setUserRole] = useState('');
-  
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
   const [activeMenu, setActiveMenu] = useState('dashboard');
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [isDarkMode, setIsDarkMode] = useState(() => localStorage.getItem('darkMode') === 'true');
