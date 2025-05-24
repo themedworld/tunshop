@@ -12,14 +12,7 @@
 /build
 /dist
 
-# Misc
-.DS_Store
-.env.local
-.env.development
-.env.test
-.env.production
-.env
-.env*.local
+
 
 # Debug
 npm-debug.log*
