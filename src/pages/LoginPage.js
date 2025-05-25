@@ -64,124 +64,122 @@ const submitForm = async(event) => {
 }
 
     return ( 
-         <div className={`app-container ${isDarkMode ? 'dark-mode' : ''}`}>
-      <Header isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
-        <div className="login-page " style={{ minHeight: "100vh" }}>
-            <div className="container py-5">
-                <div className="row justify-content-center">
-                    <div className="col-md-8 col-lg-6">
-                        <div className="card shadow-sm">
-                            <div className="card-header  border-0 pt-4">
-                                <h2 className="text-center text-primary mb-0">Welcome Back</h2>
-                                <p className="text-center text-muted">Sign in to your account</p>
-                            </div>
-                            <div className="card-body px-5 py-4">
-                                {error && (
-                                    <div className="alert alert-danger alert-dismissible fade show" role="alert">
-                                        {error}
-                                        <button type="button" className="btn-close" onClick={() => setError("")}></button>
-                                    </div>
-                                )}
-                                
-                                <form onSubmit={submitForm}>
-                                    <div className="mb-3">
-                                        <label htmlFor="username" className="form-label">Username</label>
-                                        <div className="input-group">
-                                            <span className="input-group-text">
-                                                <i className="bi bi-person-fill"></i>
-                                            </span>
-                                            <input 
-                                                type="text" 
-                                                className="form-control" 
-                                                id="username"
-                                                value={username}
-                                                onChange={(e) => setUserName(e.target.value)}
-                                                placeholder="Enter your username"
-                                                required
-                                            />
-                                        </div>
-                                    </div>
-                                    
-                                    <div className="mb-3">
-                                        <label htmlFor="password" className="form-label">Password</label>
-                                        <div className="input-group">
-                                            <span className="input-group-text">
-                                                <i className="bi bi-lock-fill"></i>
-                                            </span>
-                                            <input 
-                                                type="password" 
-                                                className="form-control" 
-                                                id="password"
-                                                value={password}
-                                                onChange={(e) => setPassword(e.target.value)}
-                                                placeholder="Enter your password"
-                                                required
-                                            />
-                                        </div>
-                                    </div>
-                                    
-                                    <div className="mb-3 d-flex justify-content-between align-items-center">
-                                        <div className="form-check">
-                                            <input 
-                                                type="checkbox" 
-                                                className="form-check-input" 
-                                                id="rememberMe" 
-                                            />
-                                            <label className="form-check-label" htmlFor="rememberMe">
-                                                Remember me
-                                            </label>
-                                        </div>
-                                        <Link to="/forgot-password" className="text-decoration-none">
-                                            Forgot password?
-                                        </Link>
-                                    </div>
-                                    
-                                    <button 
-                                        type="submit" 
-                                        className="btn btn-primary w-100 py-2"
-                                        disabled={loading}
-                                    >
-                                        {loading ? (
-                                            <>
-                                                <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
-                                                Signing in...
-                                            </>
-                                        ) : "Sign In"}
-                                    </button>
-                                    
-                                    <div className="text-center mt-3">
-                                        <p className="text-muted">
-                                            Don't have an account?{' '}
-                                            <Link to="/Choix" className="text-primary text-decoration-none fw-bold">
-                                                Register here
-                                            </Link>
-                                        </p>
-                                    </div>
-                                    
-                                    <div className="text-center mt-4">
-                                        <p className="text-muted">Or sign in with</p>
-                                        <div className="d-flex justify-content-center gap-3">
-                                            <button type="button" className="btn btn-outline-primary rounded-circle p-2">
-                                                <i className="bi bi-google"></i>
-                                            </button>
-                                            <button type="button" className="btn btn-outline-primary rounded-circle p-2">
-                                                <i className="bi bi-facebook"></i>
-                                            </button>
-                                            <button type="button" className="btn btn-outline-primary rounded-circle p-2">
-                                                <i className="bi bi-twitter"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+       <div className={`app-container ${isDarkMode ? 'dark-mode' : ''}`}>
+  <Header isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
+  <div className="login-page d-flex align-items-center" style={{ minHeight: "100vh" }}>
+    <div className="container py-3 py-md-5">
+      <div className="row justify-content-center">
+        <div className="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
+          <div className="card shadow-sm">
+            <div className="card-header border-0 pt-3 pt-md-4">
+              <h2 className="text-center text-primary mb-0 fs-3 fs-md-2">Welcome Back</h2>
+              <p className="text-center text-muted small">Sign in to your account</p>
             </div>
-            
-            {/* Ajoutez ces styles pour personnaliser davantage */}
-           
-        </div></div>
+            <div className="card-body px-3 px-sm-4 px-md-5 py-3 py-md-4">
+              {error && (
+                <div className="alert alert-danger alert-dismissible fade show" role="alert">
+                  {error}
+                  <button type="button" className="btn-close" onClick={() => setError("")}></button>
+                </div>
+              )}
+              
+              <form onSubmit={submitForm}>
+                <div className="mb-3">
+                  <label htmlFor="username" className="form-label">Username</label>
+                  <div className="input-group">
+                    <span className="input-group-text">
+                      <i className="bi bi-person-fill"></i>
+                    </span>
+                    <input 
+                      type="text" 
+                      className="form-control" 
+                      id="username"
+                      value={username}
+                      onChange={(e) => setUserName(e.target.value)}
+                      placeholder="Enter your username"
+                      required
+                    />
+                  </div>
+                </div>
+                
+                <div className="mb-3">
+                  <label htmlFor="password" className="form-label">Password</label>
+                  <div className="input-group">
+                    <span className="input-group-text">
+                      <i className="bi bi-lock-fill"></i>
+                    </span>
+                    <input 
+                      type="password" 
+                      className="form-control" 
+                      id="password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      placeholder="Enter your password"
+                      required
+                    />
+                  </div>
+                </div>
+                
+                <div className="mb-3 d-flex justify-content-between align-items-center">
+                  <div className="form-check">
+                    <input 
+                      type="checkbox" 
+                      className="form-check-input" 
+                      id="rememberMe" 
+                    />
+                    <label className="form-check-label small" htmlFor="rememberMe">
+                      Remember me
+                    </label>
+                  </div>
+                  <Link to="/forgot-password" className="text-decoration-none small">
+                    Forgot password?
+                  </Link>
+                </div>
+                
+                <button 
+                  type="submit" 
+                  className="btn btn-primary w-100 py-2"
+                  disabled={loading}
+                >
+                  {loading ? (
+                    <>
+                      <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                      Signing in...
+                    </>
+                  ) : "Sign In"}
+                </button>
+                
+                <div className="text-center mt-3">
+                  <p className="text-muted small mb-0">
+                    Don't have an account?{' '}
+                    <Link to="/Choix" className="text-primary text-decoration-none fw-bold">
+                      Register here
+                    </Link>
+                  </p>
+                </div>
+                
+                <div className="text-center mt-3 mt-md-4">
+                  <p className="text-muted small mb-2">Or sign in with</p>
+                  <div className="d-flex justify-content-center gap-2 gap-md-3">
+                    <button type="button" className="btn btn-outline-primary rounded-circle p-2">
+                      <i className="bi bi-google"></i>
+                    </button>
+                    <button type="button" className="btn btn-outline-primary rounded-circle p-2">
+                      <i className="bi bi-facebook"></i>
+                    </button>
+                    <button type="button" className="btn btn-outline-primary rounded-circle p-2">
+                      <i className="bi bi-twitter"></i>
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
     );
 }
 

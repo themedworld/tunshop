@@ -112,25 +112,30 @@ const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    
-    try {
-      const payload = {
-        ...product,
-        price: parseFloat(product.price),
-        discountedPrice: product.discountedPrice ? parseFloat(product.discountedPrice) : null,
-        stock: product.stock ? parseInt(product.stock) : null,
-        variants: product.variants.split(',').map(v => v.trim())
-      };
+  e.preventDefault();
+  
+  try {
+    // Récupérez l'ID de l'utilisateur connecté
+    const userId = authService.getUserId();
+    if (!userId) throw new Error("User not authenticated");
 
-      await axios.post(`${API_BASE_URL}/api/v1/products`, payload);
-      alert('Produit créé avec succès !');
-      navigate('/ventes');
-    } catch (error) {
-      console.error('Erreur:', error);
-      alert('Erreur lors de la création du produit');
-    }
-  };
+    const payload = {
+      ...product,
+      userid: userId, // Ajoutez l'ID utilisateur explicitement
+      price: parseFloat(product.price),
+      discountedPrice: product.discountedPrice ? parseFloat(product.discountedPrice) : null,
+      stock: product.stock ? parseInt(product.stock) : null,
+      variants: product.variants.split(',').map(v => v.trim())
+    };
+
+    await axios.post(`${API_BASE_URL}/api/v1/products`, payload);
+    alert('Produit créé avec succès !');
+    navigate('/ventes');
+  } catch (error) {
+    console.error('Erreur:', error);
+    alert('Erreur lors de la création du produit: ' + (error.response?.data?.message || error.message));
+  }
+};
   const handleMenuClick = (menu) => {
     setActiveMenu(menu);
     switch(menu) {
