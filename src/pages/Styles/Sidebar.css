@@ -141,3 +141,30 @@ body.dark-mode {
 .sidebar-menu li:nth-child(3) { animation-delay: 0.3s; }
 .sidebar-menu li:nth-child(4) { animation-delay: 0.4s; }
 /* Ajoutez autant de lignes que nécessaire pour vos éléments de menu */
+.sidebar-container {
+  width: 60px;
+  transition: width 0.3s ease;
+}
+
+.sidebar-container:hover, 
+.sidebar-container.collapsed {
+  width: 250px;
+}
+
+@media (min-width: 768px) {
+  .sidebar-container {
+    width: 250px;
+  }
+}
+
+.nav-link {
+  transition: all 0.2s;
+}
+
+.nav-link:hover {
+  background-color: rgba(255,255,255,0.1) !important;
+}
+
+.sidebar-header {
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}

@@ -6,6 +6,7 @@ import { faBars, faIdCard, faShieldAlt, faUserTie } from '@fortawesome/free-soli
 import Header from './Header';
 import Sidebar from './SidebarVendeur';
 import './Recruteurs.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Vendeur = () => {
   const [username, setUserName] = useState('');
@@ -74,67 +75,81 @@ const Vendeur = () => {
         />
 
         <div className={`main-content ${isSidebarOpen ? 'with-sidebar' : ''}`}>
-          <div className="header-section text-center py-5">
-            <h1 className="welcome-title">
-              <FontAwesomeIcon icon={faUserTie} className="me-3" />
-              Bienvenue, {username || 'Vendeur'}
-            </h1>
-            <p className="role-badge">{userRole || 'ROLE_Vendeur'}</p>
-          </div>
+  
+    <div className="container">
+      <h1 className="welcome-title h3 h1-md">
+        <FontAwesomeIcon icon={faUserTie} className="me-3" />
+        Bienvenue, {username || 'Vendeur'}
+      </h1>
+      <p className="role-badge lead">{userRole || 'ROLE_Vendeur'}</p>
+    </div>
+  </div>
 
-          <div className="container">
-            <div className="row justify-content-center">
-              <div className="col-lg-8 col-md-10">
-                <div className="profile-card card shadow-sm mb-5">
-                  <div className="card-body">
-                    <h2 className="card-title profile-title">
-                      <FontAwesomeIcon icon={faIdCard} className="me-2" />
-                      Profil Vendeur
-                    </h2>
-                    <div className="user-info">
-                      <div className="info-item">
-                        <span className="info-label">Nom d'utilisateur:</span>
-                        <span className="info-value">{username}</span>
-                      </div>
-                      <div className="info-item">
-                        <span className="info-label">Rôle:</span>
-                        <span className="info-value role-value">{userRole}</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="permissions-card card shadow-sm">
-                  <div className="card-body">
-                    <h3 className="permissions-title ">
-                      <FontAwesomeIcon icon={faShieldAlt} className="me-2" />
-                      Permissions
-                    </h3>
-                    <ul className="permissions-list">
-                      <li>Gestion des produits</li>
-                      <li>Suivi des ventes</li>
-                      <li>Gestion des stocks</li>
-                      <li>Analyse des statistiques commerciales</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
+<div className={`container ${isDarkMode ? 'dark-mode' : ''}`}>
+  <div className="row justify-content-center">
+    <div className="col-12 col-sm-10 col-md-10 col-lg-8">
+      {/* Profil */}
+      <div className="profile-card card shadow-sm mb-4">
+        <div className="card-body">
+          <h2 className={`card-title profile-title h5 ${isDarkMode ? 'text-light' : 'text-dark'}`}>
+            <FontAwesomeIcon icon={faIdCard} className="me-2" />
+            Profil Vendeur
+          </h2>
+          <div className="user-info">
+            <div className="info-item d-flex flex-column flex-md-row mb-2">
+              <span className={`info-label fw-bold me-md-2 ${isDarkMode ? 'text-light' : 'text-dark'}`}>
+                Nom d'utilisateur:
+              </span>
+              <span className={`info-value ${isDarkMode ? 'text-light' : 'text-dark'}`}>
+                {username}
+              </span>
             </div>
-          </div>
-
-          {/* Section artistique ajoutée */}
-          <div className="art-section mt-5">
-            <div className="art-piece">
-              <div className="art-title">L'Art du Commerce</div>
-              <div className="art-description">
-                "Le vendeur est comme un artiste, transformant les besoins en solutions,
-                et chaque interaction en une opportunité de créer de la valeur."
-              </div>
+            <div className="info-item d-flex flex-column flex-md-row">
+              <span className={`info-label fw-bold me-md-2 ${isDarkMode ? 'text-light' : 'text-dark'}`}>
+                Rôle:
+              </span>
+              <span className={`info-value role-value ${isDarkMode ? 'text-light' : 'text-dark'}`}>
+                {userRole}
+              </span>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Permissions */}
+      <div className="permissions-card card shadow-sm mb-4">
+        <div className="card-body">
+          <h3 className={`permissions-title h5 mb-3 ${isDarkMode ? 'text-light' : 'text-dark'}`}>
+            <FontAwesomeIcon icon={faShieldAlt} className="me-2" />
+            Permissions
+          </h3>
+          <ul className={`permissions-list list-unstyled ps-3 ${isDarkMode ? 'text-light' : 'text-dark'}`}>
+            <li>✔ Gestion des produits</li>
+            <li>✔ Suivi des ventes</li>
+            <li>✔ Gestion des stocks</li>
+            <li>✔ Analyse des statistiques commerciales</li>
+          </ul>
+        </div>
+      </div>
+
+      {/* Section artistique */}
+      <div className={`art-section mt-4 p-3 rounded ${isDarkMode ? 'bg-dark' : 'bg-body-secondary'}`}>
+        <div className="art-piece text-center">
+          <div className={`art-title h5 mb-2 ${isDarkMode ? 'text-light' : 'text-dark'}`}>
+            🎨 L'Art du Commerce
+          </div>
+          <div className={`art-description fst-italic ${isDarkMode ? 'text-light' : 'text-dark'}`}>
+            "Le vendeur est comme un artiste, transformant les besoins en solutions,
+            et chaque interaction en une opportunité de créer de la valeur."
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+</div></div>
+
+      </div>
+
   );
 };
 
