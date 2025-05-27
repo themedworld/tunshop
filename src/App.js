@@ -19,6 +19,7 @@ import CheckoutPage from './pages/CheckoutPage';
 import OrderConfirmation from './pages/OrderConfirmation';
 import RecentOrdersPage from './pages/RecentOrdersPage';
 import EditOrderPage from './pages/editCommande';
+import Statistique from './pages/statistique';
 function App() {
   return (
     <Routes>
@@ -32,6 +33,7 @@ function App() {
       <Route path='/Client' element={<WelcomepageRoute><DemandeurRoute><Client /></DemandeurRoute></WelcomepageRoute>} />
       <Route path='/Client' element={<WelcomepageRoute><DemandeurRoute><Client /></DemandeurRoute></WelcomepageRoute>} />
       <Route path='/ajouterproduit' element={<WelcomepageRoute><RecruteurRoute><ProductForm /></RecruteurRoute></WelcomepageRoute>} />
+      <Route path='/statistiques' element={<WelcomepageRoute><RecruteurRoute><Statistique /></RecruteurRoute></WelcomepageRoute>} />
       <Route path='/ventes' element={<WelcomepageRoute><RecruteurRoute><ProductManagement /></RecruteurRoute></WelcomepageRoute>} />
       <Route path='/order-confirmation' element={<WelcomepageRoute><DemandeurRoute><OrderConfirmation /></DemandeurRoute></WelcomepageRoute>} />
       <Route path='/checkout' element={<WelcomepageRoute><DemandeurRoute><CheckoutPage /></DemandeurRoute></WelcomepageRoute>} />

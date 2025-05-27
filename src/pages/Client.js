@@ -285,20 +285,21 @@ const Client = () => {
                                     <div className="products-grid">
                                         {filteredProducts.map(product => (
                                             <div key={product.id} className="product-card compact">
-                                                <div className="product-image-container" onClick={() => openProductModal(product)}>
-                                                    <img src={getProductImage(product)} alt={product.name} className="product-image" />
-                                                    {product.discountedPrice < product.price && (
-                                                        <span className="discount-badge compact">
-                                                            -{Math.round((1 - product.discountedPrice/product.price) * 100)}%
-                                                        </span>
-                                                    )}
-                                                </div>
-                                                <div className="product-info compact">
-                                                    <h3 className="product-title" onClick={() => openProductModal(product)}>
-                                                        {product.name}
-                                                        {product.stock <= 0 && <span className="stock-label">Épuisé</span>}
-                                                    </h3>
-                                                    <div className="price-section compact">
+                                              <div className="product-card compact">
+  <div className="product-image-container" onClick={() => openProductModal(product)}>
+    <img src={getProductImage(product)} alt={product.name} className="product-image" />
+    {product.discountedPrice < product.price && (
+      <span className="discount-badge compact">
+        -{Math.round((1 - product.discountedPrice/product.price) * 100)}%
+      </span>
+    )}
+  </div>
+  <div className="product-info compact">
+    <h3 className="product-title" onClick={() => openProductModal(product)}>
+      {product.name}
+      {product.stock <= 0 && <span className="stock-label">Épuisé</span>}
+    </h3>
+    <div className="price-section compact">
                                                         {product.discountedPrice < product.price ? (
                                                             <div className="price-container">
                                                                 <span className="old-price">{product.price} dt</span>
@@ -327,8 +328,10 @@ const Client = () => {
                                                             </>
                                                         )}
                                                     </button>
-                                                </div>
+                                                    
+                                                </div>    </div>
                                             </div>
+                                           
                                         ))}
                                     </div>
                                 )}
@@ -371,7 +374,18 @@ const Client = () => {
                                                                         <FontAwesomeIcon icon={faPlus} />
                                                                     </button>
                                                                 </div>
-                                                                <span className="item-subtotal">{(item.discountedPrice * item.quantity)} dt</span>
+                                                               <span className="item-subtotal">
+  {item.discountedPrice ? (
+    <>
+      <span style={{ textDecoration: 'line-through', color: '#999', marginRight: '5px' }}>
+        {(item.price * item.quantity)} dt
+      </span>
+      {(item.discountedPrice * item.quantity)} dt
+    </>
+  ) : (
+    (item.price * item.quantity) + ' dt'
+  )}
+</span>
                                                             </div>
                                                             {product.variants && (
                                                                 <div className="item-variants">

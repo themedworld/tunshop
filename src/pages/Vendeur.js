@@ -76,14 +76,7 @@ const Vendeur = () => {
 
         <div className={`main-content ${isSidebarOpen ? 'with-sidebar' : ''}`}>
   
-    <div className="container">
-      <h1 className="welcome-title h3 h1-md">
-        <FontAwesomeIcon icon={faUserTie} className="me-3" />
-        Bienvenue, {username || 'Vendeur'}
-      </h1>
-      <p className="role-badge lead">{userRole || 'ROLE_Vendeur'}</p>
-    </div>
-  </div>
+
 
 <div className={`container ${isDarkMode ? 'dark-mode' : ''}`}>
   <div className="row justify-content-center">
@@ -148,7 +141,8 @@ const Vendeur = () => {
   </div>
 </div></div>
 
-      </div>
+      </div> 
+  </div>
 
   );
 };

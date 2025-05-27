@@ -16,6 +16,7 @@ const ProductForm = () => {
     name: '',
     category: 'Electronics',
     price: '',
+    prixachat:'',
     discountedPrice: '',
     description: '',
     primaryImage: '',
@@ -123,6 +124,7 @@ const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
       ...product,
       userid: userId, // Ajoutez l'ID utilisateur explicitement
       price: parseFloat(product.price),
+      prixachat: parseFloat(product.prixachat),
       discountedPrice: product.discountedPrice ? parseFloat(product.discountedPrice) : null,
       stock: product.stock ? parseInt(product.stock) : null,
       variants: product.variants.split(',').map(v => v.trim())
@@ -216,13 +218,26 @@ const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
       <div className="form-section">
         <h3 className="form-section-title">Prix & Stock</h3>
         <div className="form-row">
-          <div className="form-group">
+                    <div className="form-group">
             <label className="form-label">Prix* (€)</label>
             <input
               type="number"
               step="0.01"
               name="price"
               value={product.price}
+              onChange={handleChange}
+              required
+              className="form-input"
+              placeholder="999.99"
+            />
+          </div>
+          <div className="form-group">
+            <label className="form-label">Prix d'achat (€)</label>
+            <input
+              type="number"
+              step="0.01"
+              name="prixachat"
+              value={product.prixachat}
               onChange={handleChange}
               required
               className="form-input"
@@ -251,6 +266,7 @@ const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
             name="stock"
             value={product.stock}
             onChange={handleChange}
+            required
             className="form-input"
             placeholder="100"
           />
@@ -266,6 +282,7 @@ const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
             name="brand"
             value={product.brand}
             onChange={handleChange}
+            required
             className="form-input"
             placeholder="Samsung"
           />
@@ -322,7 +339,7 @@ const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
           <div className="image-upload-container">
             {previews.primary ? (
               <div className="image-preview-wrapper">
-                <img src={previews.primary} alt="Preview principale" className="image-preview" />
+                <img src={previews.primary} alt="Preview principale" className="image-preview" required/>
                 <button
                   type="button"
                   onClick={() => removeImage(null, 'primary')}
@@ -341,6 +358,7 @@ const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
                 <input
                   type="file"
                   accept="image/*"
+                  required
                   onChange={(e) => handleImageUpload(e, 'primary')}
                   className="hidden-input"
                 />
@@ -350,7 +368,7 @@ const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
         </div>
 
         <div className="form-group">
-          <label className="form-label">Images secondaires (max 5)</label>
+          <label className="form-label">Images secondaires (max 2)</label>
           <div className="secondary-images-grid">
             {previews.secondary.map((img, index) => (
               <div key={index} className="secondary-image-wrapper">
@@ -365,7 +383,7 @@ const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
               </div>
             ))}
             
-            {previews.secondary.length < 5 && (
+            {previews.secondary.length < 2 && (
               <label className="secondary-upload-label">
                 <FontAwesomeIcon icon={faPlusCircle} className="add-icon" />
                 <input

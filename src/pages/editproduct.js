@@ -20,6 +20,7 @@ const EditProductForm = () => {
     name: '',
     category: 'Electronics',
     price: '',
+    prixachat:'',
     discountedPrice: '',
     description: '',
     primaryImage: '',
@@ -77,6 +78,7 @@ const EditProductForm = () => {
         name: productData.name,
         category: productData.category || 'Electronics',
         price: productData.price,
+        prixachat: productData.prixachat,
         discountedPrice: productData.discountedPrice || '',
         description: productData.description,
         primaryImage: productData.primaryImage,
@@ -173,6 +175,7 @@ const EditProductForm = () => {
       name: product.name,
       category: product.category,
       price: parseFloat(product.price),
+      prixachat: parseFloat(product.prixachat),
       discountedPrice: product.discountedPrice ? parseFloat(product.discountedPrice) : null,
       description: product.description,
       primaryImage: product.primaryImage,
@@ -292,6 +295,19 @@ const EditProductForm = () => {
                           placeholder="999.99"
                         />
                       </div>
+                           <div className="form-group">
+                        <label className="form-label">prixachat* (dt)</label>
+                        <input
+                          type="number"
+                          step="0.01"
+                          name="prixachat"
+                          value={product.prixachat}
+                          onChange={handleChange}
+                          required
+                          className="form-input"
+                          placeholder="999.99"
+                        />
+                      </div>
 
                       <div className="form-group">
                         <label className="form-label">Prix réduit (dt)</label>
@@ -313,6 +329,7 @@ const EditProductForm = () => {
                         type="number"
                         name="stock"
                         value={product.stock}
+                        required
                         onChange={handleChange}
                         className="form-input"
                         placeholder="100"
@@ -328,6 +345,7 @@ const EditProductForm = () => {
                         type="text"
                         name="brand"
                         value={product.brand}
+                        required
                         onChange={handleChange}
                         className="form-input"
                         placeholder="Samsung"
@@ -385,7 +403,7 @@ const EditProductForm = () => {
                       <div className="image-upload-container">
                         {previews.primary ? (
                           <div className="image-preview-wrapper">
-                            <img src={previews.primary} alt="Preview principale" className="image-preview" />
+                            <img src={previews.primary} alt="Preview principale" className="image-preview" required />
                             <button
                               type="button"
                               onClick={() => removeImage(null, 'primary')}
@@ -413,7 +431,7 @@ const EditProductForm = () => {
                     </div>
 
                     <div className="form-group">
-                      <label className="form-label">Images secondaires (max 5)</label>
+                      <label className="form-label">Images secondaires (max 2)</label>
                       <div className="secondary-images-grid">
                         {previews.secondary.map((img, index) => (
                           <div key={index} className="secondary-image-wrapper">
@@ -428,12 +446,13 @@ const EditProductForm = () => {
                           </div>
                         ))}
                         
-                        {previews.secondary.length < 5 && (
+                        {previews.secondary.length < 2 && (
                           <label className="secondary-upload-label">
                             <FontAwesomeIcon icon={faPlusCircle} className="add-icon" />
                             <input
                               type="file"
                               accept="image/*"
+                              required
                               onChange={(e) => handleImageUpload(e, 'secondary')}
                               className="hidden-input"
                               ref={secondaryInputRef}
