@@ -16,7 +16,7 @@ import './Styles/ProductManagement.css';
 import { authService } from '../services/authService';
 import Header from './Header';
 import Sidebar from './SidebarVendeur';
-import './Styles/ProductManagement.css';
+
 import ProductModal from './productmodel';
 const ProductManagement = () => {
   const [userData, setUserData] = useState({
@@ -310,11 +310,11 @@ const logout = () => {
                       <div className="price-section">
                         {product.discountedPrice ? (
                           <>
-                            <span className="discounted-price">{product.discountedPrice} €</span>
-                            <span className="original-price">{product.price} €</span>
+                            <span className="discounted-price">{product.discountedPrice} dt</span>
+                            <span className="original-price">{product.price} dt</span>
                           </>
                         ) : (
-                          <span className="price">{product.price} €</span>
+                          <span className="price">{product.price} dt</span>
                         )}
                       </div>
                       <div className="product-meta">

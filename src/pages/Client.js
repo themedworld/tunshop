@@ -288,11 +288,11 @@ const Client = () => {
                                               <div className="product-card compact">
   <div className="product-image-container" onClick={() => openProductModal(product)}>
     <img src={getProductImage(product)} alt={product.name} className="product-image" />
-    {product.discountedPrice < product.price && (
-      <span className="discount-badge compact">
-        -{Math.round((1 - product.discountedPrice/product.price) * 100)}%
-      </span>
-    )}
+   {product.discountedPrice < product.price && Math.round((1 - product.discountedPrice/product.price) * 100) > 0 && Math.round((1 - product.discountedPrice/product.price) * 100) != 100 &&(
+  <span className="discount-badge compact">
+    -{Math.round((1 - product.discountedPrice/product.price) * 100)}%
+  </span>
+)}
   </div>
   <div className="product-info compact">
     <h3 className="product-title" onClick={() => openProductModal(product)}>
@@ -451,6 +451,7 @@ const Client = () => {
                 />
             )}
         </div>
+     
     );
 };
 

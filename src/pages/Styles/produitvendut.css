@@ -1,0 +1,236 @@
+/* Styles de base */
+.app-container {
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.app-container.dark-mode {
+  background-color: #1a1a2e;
+  color: #e6e6e6;
+}
+
+/* Header */
+.header {
+  background: linear-gradient(135deg, #0d6efd 0%, #0b5ed7 100%);
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  color: white;
+}
+
+.dark-mode .header {
+  background: linear-gradient(135deg, #16213e 0%, #0f3460 100%);
+}
+
+/* Bouton burger */
+.sidebar-toggle-container {
+  position: fixed;
+  top: 70px;
+  left: 20px;
+  z-index: 1000;
+}
+
+.toggle-sidebar-btn {
+  background: #0d6efd;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.toggle-sidebar-btn:hover {
+  background: #0b5ed7;
+  transform: scale(1.1);
+}
+
+.dark-mode .toggle-sidebar-btn {
+  background: #4da6ff;
+}
+
+/* Contenu principal */
+.content-wrapper {
+  display: flex;
+  min-height: calc(100vh - 70px);
+  margin-top: 70px;
+}
+
+.main-content {
+  flex: 1;
+  padding: 2rem;
+  transition: margin-left 0.3s ease;
+}
+
+.main-content.with-sidebar {
+  margin-left: 250px;
+}
+
+/* Container du tableau */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Tableau des produits */
+.products-table {
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  margin-top: 2rem;
+}
+
+.dark-mode .products-table {
+  background-color: #16213e;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.table-header {
+  display: grid;
+  grid-template-columns: 3fr 2fr 1fr 2fr 2fr 2fr;
+  background-color: #f8f9fa;
+  padding: 1rem;
+  font-weight: 600;
+  color: #343a40;
+}
+
+.dark-mode .table-header {
+  background-color: #0f3460;
+  color: #e6e6e6;
+}
+
+.product-row {
+  display: grid;
+  grid-template-columns: 3fr 2fr 1fr 2fr 2fr 2fr;
+  padding: 1rem;
+  border-bottom: 1px solid #e9ecef;
+  transition: background-color 0.2s;
+}
+
+.product-row:hover {
+  background-color: #f8f9fa;
+}
+
+.dark-mode .product-row:hover {
+  background-color: #1e3a8a;
+}
+
+.buyer-info {
+  display: flex;
+  align-items: center;
+  margin-top: 0.5rem;
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+.dark-mode .buyer-info {
+  color: #a5a5a5;
+}
+
+.buyer-info svg {
+  margin-right: 0.5rem;
+}
+
+.original-price {
+  text-decoration: line-through;
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+.dark-mode .original-price {
+  color: #a5a5a5;
+}
+
+/* Styles pour les profits */
+.profit-positive {
+  color: #28a745;
+  font-weight: 600;
+}
+
+.profit-negative {
+  color: #dc3545;
+  font-weight: 600;
+}
+
+/* Cartes de récapitulatif */
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.summary-cards > div {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.dark-mode .summary-cards > div {
+  background-color: #16213e;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.summary-cards > div > div:first-child {
+  color: #6c757d;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.dark-mode .summary-cards > div > div:first-child {
+  color: #a5a5a5;
+}
+
+.summary-cards > div > div:last-child {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+/* Message vide */
+.empty-message {
+  padding: 2rem;
+  text-align: center;
+  color: #6c757d;
+}
+
+.dark-mode .empty-message {
+  color: #a5a5a5;
+}
+
+/* Icônes */
+svg {
+  margin-right: 0.5rem;
+  color: #495057;
+}
+
+.dark-mode svg {
+  color: #e6e6e6;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .main-content.with-sidebar {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .table-header,
+  .product-row {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    padding: 0.75rem;
+  }
+
+  .summary-cards {
+    grid-template-columns: 1fr;
+  }
+}
